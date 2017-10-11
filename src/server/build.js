@@ -118,7 +118,7 @@ function pug() {
 }
 
 function refresh(fn, arr) {
-    jetpack.remove(BUILD);
+    // jetpack.remove(BUILD);
     jetpack.dirAsync(BUILD).then(() => {
         let promArr = [];
         if(arr === undefined) {
@@ -130,12 +130,12 @@ function refresh(fn, arr) {
             });
         }
     })
-        // .then(jetpack.dirAsync(path.join(BUILD), VARS.modules)) // for example if you wanted to refresh a directory
-        // .then(jetpack.fileAsync(MAIN_CSS, {content: ''}))
-        // .then(jetpack.fileAsync(MAIN_JS, {content: ''}))
-        // .then(() => {
-        //     return fn();
-        // });
+        .then(jetpack.dirAsync(path.join(BUILD), VARS.modules)) // for example if you wanted to refresh a directory
+        .then(jetpack.fileAsync(MAIN_CSS, {content: ''}))
+        .then(jetpack.fileAsync(MAIN_JS, {content: ''}))
+        .then(() => {
+            return fn();
+        });
 }
 
 function refreshT() {
