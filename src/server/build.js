@@ -42,7 +42,6 @@ function clone(obj) {
     for (let attr in obj) {
         if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
     }
-    console.log('copy', copy);
     return copy;
 }
 
@@ -99,14 +98,10 @@ function sass(env) {
         outputStyle: 'compressed'
     };
 
-    console.log('options', options);
-
     if (env === 'dev') {
         options.sourceMapEmbed = true;
         options.sourceMapContents = false;
     }
-
-    console.log(clone(options));
 
     options.file = path.join(SOURCE, VARS.style, VARS.index + '.scss');
     sassCompress(clone(options));
@@ -129,7 +124,6 @@ function refresh(fn, arr) {
         if(arr === undefined) {
             arr = [MAIN_CSS, MAIN_JS];
         }
-        console.log(arr);
         for (let i = 0; i < arr.length; i++) {
             Promise.all(promArr).then(values => {
                 return fn();

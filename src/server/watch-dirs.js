@@ -21,7 +21,6 @@ function jsFileArr() {
     for (var i = 0; i < jsDirs.length; i++) {
         promises.push(new Promise((resolve, reject) => {
             jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.js, jsDirs[i]), {matching: ['*.js', path.join('**', '*.js'), '!*.spec.js', '!*.json', '!vendor/*.js']}).then(data => {
-                console.log('jsData', data, '\n');
                 resolve(data);
             }).catch((resolve, reject) => {
                 reject();
@@ -29,7 +28,6 @@ function jsFileArr() {
         }));
     }
     return Promise.all(promises).then(values => {
-        console.log('values', values, '\n');
         return [].concat.apply([], values);
     }).catch(reason => {
         throw chalk.red(reason);
@@ -40,7 +38,6 @@ function sassFileArr() {
     return new Promise((resolve, reject) => {
         jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.style), {matching: '*.scss'}).then(data => {
             resolve(data);
-            console.log(data);
         }).catch((resolve, reject) => {
             reject()
         });
