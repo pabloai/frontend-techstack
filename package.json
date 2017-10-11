@@ -7,7 +7,8 @@
     "test": "test",
     "start": "node src/server/dev-server.js",
     "pug": "pug src/app/pug --out build/",
-    "dev": "node src/server/watchers.js"
+    "dev": "node src/server/watchers.js dev",
+    "prod": "node src/server/watchers.js prod"
   },
   "author": "Kat Chilton for Adyen",
   "license": "ISC",

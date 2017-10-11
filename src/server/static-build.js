@@ -4,12 +4,10 @@
 const build = require('./build'),
 	env = process.argv[2] ? process.argv[2] : 'dev';
 
-compile()
-
-function compile() {
-	build.refresh(() => {
+build.startup(() => {
+	build.bundleExternal(() => {
 		build.js(env);
-		build.sass(env);
-		build.pug();
 	});
-}
+	build.sass(env);
+	build.pug();
+});

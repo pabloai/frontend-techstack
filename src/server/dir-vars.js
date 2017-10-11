@@ -6,5 +6,6 @@ module.exports = {
 	js: 'js',
 	jsDirs: ['module1', 'module2'],
 	style: 'style',
-	out: 'build'
+	out: 'build',
+	vendor: 'vendor'
 };

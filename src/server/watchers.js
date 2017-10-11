@@ -9,6 +9,8 @@ const path = require('path'),
     chalk = require('chalk'),
     VARS = require('./dir-vars');
 
+require('./static-build'); //build on start
+
 pugWatchFiles().then(data => {
     pug(data);
 });
@@ -47,7 +49,6 @@ function sass(arr) {
 }
 
 function createWatcher(src, fn) {
-    require('./static-build'); //build on start
     chokidar.watch(src, {
         ignored: [
             path.join(__dirname + 'index-params.js'),
