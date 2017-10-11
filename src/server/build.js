@@ -123,7 +123,7 @@ function pug() {
 }
 
 function refresh(fn, arr) {
-    // jetpack.remove(VARS.build);
+    jetpack.remove(BUILD);
     jetpack.dirAsync(BUILD).then(() => {
         let promArr = [];
         if(arr === undefined) {
