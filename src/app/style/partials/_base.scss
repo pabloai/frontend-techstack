@@ -5,8 +5,10 @@ h1, h2, h3, h4, h5, h6 {
 body {
 	font-family: $open-sans;
 	font-size: $font-size;
+	line-height: $gutter*1.5;
+	margin: $gutter*3;
+	text-align: center;
 }
-
-.error {
+.content .error {
 	@include error();
 }

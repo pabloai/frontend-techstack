@@ -8,7 +8,7 @@ function devServer() {
 		morgan = require('morgan'),
 		path = require('path'),
 		VARS = require('./dir-vars'),
-		location = path.join(__dirname, '..', '..');
+		location = path.join(__dirname, '..', '..', VARS.out);
 
 	app.use(morgan('dev'));
 
@@ -23,6 +23,8 @@ function devServer() {
 			}
 		});
 	});
+
+	app.use(express.static(location));
 
 	app.listen(VARS.port);
 
