@@ -32,11 +32,9 @@ function pug(arr) {
 
 function js(arr) {
     createWatcher(arr, () => {
-        // appBuilder(() => {
         build.refresh(() => {
             build.js('dev');
         });
-        // });
     });
 }
 

@@ -1,6 +1,6 @@
 function module2() {
 	console.log('module2');
-	// alert('Updated!');
+	alert('Updated!');
 	let x = 'ABC';
 }
 
