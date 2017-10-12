@@ -26,6 +26,10 @@
     "eslint-plugin-standard": "^3.0.1",
     "express": "^4.16.2",
     "fs-jetpack": "^1.2.0",
+    "istanbul": "^0.4.5",
+    "jasmine": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
     "morgan": "^1.9.0",
     "node-sass": "^4.5.3"
   }
