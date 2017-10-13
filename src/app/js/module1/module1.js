@@ -1,7 +1,13 @@
+
 function module1() {
-	console.log('module1');
-	// alert('Updated!');
-	let x = 'ABC';
+
+	let self = this;
+	self.getUserAgent = getUserAgent
+	return self;
+
+	function getUserAgent() {
+		return window.navigator.userAgent;
+	}
 }
 
 module.exports = module1

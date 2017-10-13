@@ -10,9 +10,6 @@ function karmaConfig(config) {
     reporters: ['progress', 'coverage'],
     singleRun: false, // enable for continuous integration
     plugins: [
-    	'karma-coverage',
-    	'karma-istanbul',
-    	'karma-jasmine',
     	'karma-chrome-launcher',
     	'karma-firefox-launcher',
     	'karma-safari-launcher'
