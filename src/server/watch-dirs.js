@@ -20,7 +20,7 @@ function jsFileArr() {
     var promises = []
     for (var i = 0; i < jsDirs.length; i++) {
         promises.push(new Promise((resolve, reject) => {
-            jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.js, jsDirs[i]), {matching: ['*.js', path.join('**', '*.js'), '!*.spec.js', '!*.json', '!vendor/*.js']}).then(data => {
+            jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.js, jsDirs[i]), {matching: ['*.js', path.join('**', '*.js'), '!*.spec.js', '!*.json']}).then(data => {
                 resolve(data);
             }).catch((resolve, reject) => {
                 reject();
