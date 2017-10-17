@@ -1,13 +1,21 @@
 
+/**
+ * Represents module1.
+ * @module module1
+ */
 function module1() {
 
-	let self = this;
-	self.getUserAgent = getUserAgent
-	return self;
+    var self = this;
+    self.getUserAgent = getUserAgent;
+    return self;
 
-	function getUserAgent() {
-		return window.navigator.userAgent;
-	}
+    /**
+	 * Return the userAgent of the browser.
+	 * @func getUserAgent
+	 */
+    function getUserAgent() {
+        return window.navigator.userAgent;
+    }
 }
 
-module.exports = module1
+module.exports = module1;

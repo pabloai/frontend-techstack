@@ -1,7 +1,7 @@
 function module2() {
-	console.log('module2');
-	alert('Updated!');
-	let x = 'ABC';
+    console.log('module2');
+    alert('Updated!');
+    // let x = 'ABC';
 }
 
-module.exports = module2
+module.exports = module2;

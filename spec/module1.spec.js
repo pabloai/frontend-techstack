@@ -1,7 +1,10 @@
 describe("Module 1 launches correctly", function() {
-  var a;
+  it("and returns a public object with one function", function() {
 
-  it("verifies the user agent", function() {
-    expect(a).toBe(true);
+    let mod1 = require('../src/app/js/module1/module1'),
+        userAgent = window.navigator.userAgent;
+    mod1();
+    expect(mod1.getUserAgent).toBeDefined();
+    expect(mod1.getUserAgent()).toEqual(userAgent);
   });
 });
