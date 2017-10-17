@@ -40,9 +40,9 @@ function bundleExternal(cb) {
         cb();
     });
     browserify({require: [
-        // 'jquery' - you can use node_modules here
+        'jquery' //- you can use node_modules here
     ]})
-        .require('./src/app/js/vendor/jquery-3.2.1.min.js')
+        // .require('./vendor/jquery-3.2.1.min.js')
         .bundle()
         .pipe(ws);
 }
@@ -76,7 +76,7 @@ function buildJS(input, output, env) {
     } else {
         browserify(opts)
             .add(input)
-            .require('./src/app/config/dev-env', {expose: 'config'}) // ---> in order to include a minified file and refer to it by name ('expose' is name)
+            .require('./src/app/config/prod-env', {expose: 'config'}) // ---> in order to include a minified file and refer to it by name ('expose' is name)
             .require('./build/vendor.js')
             .transform(babelify, {presets: ['es2015', 'react']})
             .transform(uglyTransformer, 'uglifyify')
@@ -86,7 +86,19 @@ function buildJS(input, output, env) {
 }
 
 function js(env) {
-    buildJS(path.join(SOURCE, VARS.js, VARS.index + '.js'), MAIN_JS, env);
+    const lintCmd = 'npm run lint:js',
+        testCmd = 'npm test';
+    exec(lintCmd, (err, stdout, stderr) => {
+        if (err) {
+            CMD_EXEC_ERROR(err, stdout, stderr);
+        }
+        else exec(testCmd, (err, stdout, stderr) => {
+            if (err) {
+                CMD_EXEC_ERROR(err, stdout, stderr);
+            }
+            else buildJS(path.join(SOURCE, VARS.js, VARS.index + '.js'), MAIN_JS, env);
+        })
+    })
 }
 
 function sassCompress(options) {
@@ -106,18 +118,25 @@ function sassCompress(options) {
 }
 
 function sass(env) {
-    let options = {
-        outFile: BUILD,
-        outputStyle: 'compressed'
-    };
+    const cmd = 'npm run lint:style';
+    exec(cmd, (err, stdout, stderr) => {
+        if (err) {
+            CMD_EXEC_ERROR(err, stdout, stderr);
+        } else {
+            let options = {
+                outFile: BUILD,
+                outputStyle: 'compressed'
+            };
 
-    if (env === 'dev') {
-        options.sourceMapEmbed = true;
-        options.sourceMapContents = false;
-    }
+            if (env === 'dev') {
+                options.sourceMapEmbed = true;
+                options.sourceMapContents = false;
+            }
 
-    options.file = path.join(SOURCE, VARS.style, VARS.index + '.scss');
-    sassCompress(clone(options));
+            options.file = path.join(SOURCE, VARS.style, VARS.index + '.scss');
+            sassCompress(clone(options));
+        }
+    });
 }
 
 function pug() {

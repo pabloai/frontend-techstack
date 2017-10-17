@@ -5,6 +5,7 @@ const path = require('path'),
     jsWatchFiles = require('./watch-dirs').jsFileArr,
     sassWatchFiles = require('./watch-dirs').sassFileArr,
     build = require('./build'),
+    exec = require('child_process').exec,
     // appBuilder = require('./build-app-dir'),
     chalk = require('chalk'),
     VARS = require('./dir-vars');
@@ -21,6 +22,8 @@ sassWatchFiles().then(data => {
  sass(data);
 });
 server();
+
+
 
 function pug(arr) {
     createWatcher(arr, () => {
