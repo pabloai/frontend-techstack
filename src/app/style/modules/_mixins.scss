@@ -1,4 +1,5 @@
-@mixin error() {
-	font-size: $error-font-size;
-	color: $error-color;
+
+@mixin error {
+    color: $error-color;
+    font-size: $error-font-size;
 }
