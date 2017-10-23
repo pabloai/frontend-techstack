@@ -4,10 +4,13 @@
  * @module module1
  */
 function module1() {
-
-    var self = this;
-    self.getUserAgent = getUserAgent;
+    let self = this;
+    init();
     return self;
+
+    function init() {
+        self.getUserAgent = getUserAgent;
+    }
 
     /**
 	 * Return the userAgent of the browser.

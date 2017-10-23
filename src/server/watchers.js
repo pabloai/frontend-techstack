@@ -23,8 +23,6 @@ sassWatchFiles().then(data => {
 });
 server();
 
-
-
 function pug(arr) {
     createWatcher(arr, () => {
         build.refresh(() => {

@@ -1,7 +1,8 @@
+
 function module2() {
-    console.log('module2');
-    alert('Updated!');
-    // let x = 'ABC';
+    let x = 'ABC';
+    x = x.toLowerCase();
+    return x;
 }
 
 module.exports = module2;
