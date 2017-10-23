@@ -5,7 +5,7 @@
   "author": "Kat Chilton for Adyen",
   "main": "index.js",
   "scripts": {
-    "test": "src/app/js/**/*.js src/app/js/*.js && node_modules/.bin/karma start",
+    "test": "node_modules/.bin/karma start",
     "server": "node src/server/dev-server.js",
     "pug": "pug src/app/pug --out build/",
     "start": "node src/server/watchers.js dev & npm run generate:doc",
