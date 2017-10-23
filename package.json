@@ -6,9 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "src/app/js/**/*.js src/app/js/*.js && node_modules/.bin/karma start",
-    "start": "node src/server/dev-server.js",
+    "server": "node src/server/dev-server.js",
     "pug": "pug src/app/pug --out build/",
-    "dev": "node src/server/watchers.js dev & npm run generate:doc",
+    "start": "node src/server/watchers.js dev & npm run generate:doc",
     "prod": "node_modules/.bin/snyk test && node src/server/watchers.js prod & npm run generate:doc",
     "lint": "npm run lint:js & npm run lint:style",
     "lint:js": "./node_modules/.bin/eslint src/app/js/**/*.js src/app/js/*.js",

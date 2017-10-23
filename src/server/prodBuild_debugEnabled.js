@@ -96,13 +96,7 @@ function js() {
     exec(lintCmd, (err, stdout, stderr) => {
         if (err) {
             CMD_EXEC_ERROR(err, stdout, stderr);
-        }
-        // else exec(testCmd, (err, stdout, stderr) => {
-        //     if (err) {
-        //         CMD_EXEC_ERROR(err, stdout, stderr);
-        //     }
-            else buildJS(path.join(SOURCE, VARS.js, VARS.index + '.js'), MAIN_JS);
-        // }) 
+        } else buildJS(path.join(SOURCE, VARS.js, VARS.index + '.js'), MAIN_JS);
     })
 }
 
