@@ -2,7 +2,7 @@
   "name": "frontend-techstack",
   "version": "1.0.0",
   "description": "checkout-web",
-  "author": "Kat Chilton for Adyen",
+  "author": "Kat Chilton",
   "main": "index.js",
   "repository": {
     "type": "git",
