@@ -4,6 +4,11 @@
   "description": "checkout-web",
   "author": "Kat Chilton for Adyen",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EightArmCode/frontend-techstack.git"
+  },
+  "license": "MIT",
   "scripts": {
     "test": "node_modules/.bin/karma start",
     "server": "node ${npm_package_vars_server}",
