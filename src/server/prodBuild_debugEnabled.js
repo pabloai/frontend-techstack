@@ -84,7 +84,7 @@ function buildJS(input, output) {
         .add(input)
         .require('./src/app/config/prod-env', {expose: 'config'}) // ---> in order to include a minified file and refer to it by name ('expose' is name)
         .require('./build/vendor.js')
-        .transform(babelify, {presets: ['es2015', 'react']})
+        .transform(babelify, {presets: ['env', 'react']})
         .transform(uglyTransformer, 'uglifyify')
         .bundle()
         .pipe(ws);

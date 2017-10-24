@@ -13,8 +13,8 @@ function karmaConfig(config) {
     reporters: ['dots', 'progress', 'coverage'],
     singleRun: true, // enable for continuous integration
     plugins: [
-        // 'karma-phantomjs-launcher',
-        'karma-chrome-launcher',
+        'karma-phantomjs-launcher',
+        // 'karma-chrome-launcher',
         // 'karma-firefox-launcher',
         // 'karma-safari-launcher',`
         'karma-browserify',
@@ -27,13 +27,13 @@ function karmaConfig(config) {
         '../src/app/js/*.js': 'browserify',
         '*.spec.js': 'browserify'
     },
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
     browserify: {
         debug: true,
         sourceMaps: true,
         configure: function(bundle) {
             bundle.on('prebundle', function() {
-                bundle.transform(['babelify', {presets: 'es2015'}]);
+                bundle.transform(['babelify', {presets: ['env', 'react']}]);
             });
         }
     },

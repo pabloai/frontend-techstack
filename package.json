@@ -1,5 +1,5 @@
 {
-  "name": "demo-project",
+  "name": "frontend-techstack",
   "version": "1.0.0",
   "description": "checkout-web",
   "author": "Kat Chilton for Adyen",
@@ -45,7 +45,7 @@
   },
   "babel": {
     "presets": [
-      "es2015"
+      "env", "react"
     ],
     "env": {
       "development": {
@@ -101,6 +101,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.5",
     "babel-plugin-istanbul": "^4.1.5",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babelify": "^7.3.0",
