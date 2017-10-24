@@ -88,17 +88,26 @@ function buildJS(input, output, env) {
 function js(env) {
     const lintCmd = 'npm run lint:js',
         testCmd = 'npm test';
-    exec(lintCmd, (err, stdout, stderr) => {
+    let lintChild, testChild = null;
+    lintChild = exec(lintCmd, (err, stdout, stderr) => {
         if (err) {
             CMD_EXEC_ERROR(err, stdout, stderr);
         }
-        else exec(testCmd, (err, stdout, stderr) => {
-            if (err) {
-                CMD_EXEC_ERROR(err, stdout, stderr);
-            }
-            else buildJS(path.join(SOURCE, VARS.js, VARS.index + '.js'), MAIN_JS, env);
-        })
-    })
+        else {
+            testChild = exec(testCmd, (err, stdout, stderr) => {
+                if (err) {
+                    CMD_EXEC_ERROR(err, stdout, stderr);
+                }
+                else buildJS(path.join(SOURCE, VARS.js, VARS.index + '.js'), MAIN_JS, env);
+            });
+            testChild.on('exit', () => {
+                console.log('test child fired close event');
+            });
+        }
+    });
+    lintChild.on('close', () => {
+        console.log('lint child fired close event');
+    });
 }
 
 function sassCompress(options) {
