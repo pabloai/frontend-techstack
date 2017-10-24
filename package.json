@@ -11,28 +11,34 @@
   "license": "MIT",
   "scripts": {
     "test": "node_modules/.bin/karma start",
-    "server": "node ${npm_package_vars_server}",
-    "pug": "pug src/app/pug --out ${npm_package_vars_out}",
-    "start": "node src/server/watchers.js dev & npm run generate:doc",
-    "prod": "node_modules/.bin/snyk test && node src/server/watchers.js prod & npm run generate:doc",
+    "server": "node ${npm_package_vars_devServer}",
+    "pug": "pug ${npm_package_vars_src}${npm_package_vars_app}${npm_package_vars_templates} --out ${npm_package_vars_out}",
+    "start": "node ${npm_package_vars_src}${npm_package_vars_server}watchers.js dev & npm run generate:doc",
+    "prod": "node_modules/.bin/snyk test && node ${npm_package_vars_src}${npm_package_vars_server}watchers.js prod & npm run generate:doc",
     "lint": "npm run lint:js & npm run lint:style",
-    "lint:js": "./node_modules/.bin/eslint src/app/js/**/*.js src/app/js/*.js",
+    "lint:js": "./node_modules/.bin/eslint ${npm_package_vars_src}${npm_package_vars_app}${npm_package_vars_js}**/*.js ${npm_package_vars_src}${npm_package_vars_app}${npm_package_vars_js}*.js",
     "lint:style": "node_modules/.bin/sass-lint -c ${npm_package_vars_sassLintConfig} -v ${npm_package_vars_src}${npm_package_vars_app}${npm_package_vars_style}*.scss ${npm_package_vars_src}${npm_package_vars_app}${npm_package_vars_style}**/*.scss",
     "generate:doc": "node_modules/.bin/jsdoc ${npm_package_vars_src}${npm_package_vars_app} -r -d ${npm_package_vars_out}${npm_package_vars_doc} -t node_modules/minami"
   },
   "vars": {
     "app": "app/",
-    "out": "build/",
+    "devServer": "src/server/dev-server.js",
     "doc": "doc/",
     "index": "index",
+    "js": "js/",
+    "jsDirs": ["module1", "module2"],
     "jsdoc_config": "conf.json",
     "node_version": ">=6.11.4",
+    "out": "build/",
+    "port": "9999",
     "reports": "coverage/",
-    "server": "server/dev-server.js",
     "sassLintConfig": "src/server/.sass-lint.yml",
+    "server": "server/",
     "src": "src/",
     "style": "style/",
-    "test": "spec"
+    "templates": "pug",
+    "test": "spec/",
+    "vendor": "vendor"
   },
   "babel": {
     "presets": [

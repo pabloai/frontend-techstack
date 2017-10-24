@@ -1,7 +1,7 @@
 'use strict';
 
 const jetpack = require('fs-jetpack'),
-    VARS = require('./dir-vars'),
+    VARS = require('../../package').vars,
     path = require('path'),
     chalk = require('chalk'),
     jsDirs = VARS.jsDirs;

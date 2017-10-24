@@ -7,7 +7,7 @@ function devServer() {
 		chalk = require('chalk'),
 		morgan = require('morgan'),
 		path = require('path'),
-		VARS = require('./dir-vars'),
+		VARS = require('../../package').vars,
 		location = path.join(__dirname, '..', '..', VARS.out);
 
 	app.use(morgan('dev'));

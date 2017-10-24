@@ -8,7 +8,7 @@ const path = require('path'),
     exec = require('child_process').exec,
     // appBuilder = require('./build-app-dir'),
     chalk = require('chalk'),
-    VARS = require('./dir-vars');
+    VARS = require('../../package').vars;
 
 require('./static-build'); //build on start
 
