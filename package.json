@@ -14,7 +14,6 @@
     "server": "node ${npm_package_vars_devServer}",
     "pug": "pug ${npm_package_vars_src}${npm_package_vars_app}${npm_package_vars_templates} --out ${npm_package_vars_out}",
     "start": "node ${npm_package_vars_src}${npm_package_vars_server}watchers.js devServer",
-    "poststart": "npm run generate:doc",
     "prod": "node_modules/.bin/snyk test && node ${npm_package_vars_src}${npm_package_vars_server}watchers.js prod & npm run generate:doc",
     "lint": "npm run lint:js & npm run lint:style",
     "lint:js": "./node_modules/.bin/eslint ${npm_package_vars_src}${npm_package_vars_app}${npm_package_vars_js}**/*.js ${npm_package_vars_src}${npm_package_vars_app}${npm_package_vars_js}*.js",
