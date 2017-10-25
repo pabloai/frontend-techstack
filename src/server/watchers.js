@@ -5,44 +5,44 @@ const path = require('path'),
     jsWatchFiles = require('./watch-dirs').jsFileArr,
     sassWatchFiles = require('./watch-dirs').sassFileArr,
     build = require('./build'),
-    // appBuilder = require('./build-app-dir'),
     chalk = require('chalk'),
     VARS = require('../../package').vars;
 
-require('./static-build'); //build on start
-
+// require('./static-build'); //build on start
+build.startup(server);
 pugWatchFiles().then(data => {
     pug(data);
 });
 jsWatchFiles().then(data => {
+    // console.log(data);
     js(data);
 });
 sassWatchFiles().then(data => {
- sass(data);
+    sass(data);
 });
-server();
+// server();
 
 function pug(arr) {
     createWatcher(arr, () => {
-        build.refresh(() => {
+        // build.refresh(() => {
             build.pug();
         });
-    });
+    // });
 }
 
 function js(arr) {
     createWatcher(arr, () => {
-        build.refresh(() => {
+        // build.refresh(() => {
             build.js('dev');
-        });
+        // });
     });
 }
 
 function sass(arr) {
     createWatcher(arr, () => {
-        build.refresh(() => {
+        // build.refresh(() => {
             build.sass('dev');
-        });
+        // });
     });
 }
 

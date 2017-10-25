@@ -12,9 +12,9 @@ function devServer() {
 
 	app.use(morgan('dev'));
 
-	console.info(chalk.blue('Now listening at port:' + VARS.port));
-	console.info(chalk.blue('Please visit http://localhost:' + VARS.port + ' in your browser for development.'));
-	console.info(chalk.blue('Directory location: ' + location));
+	console.info(chalk.bgBlue('Now listening at port:' + VARS.port));
+	console.info(chalk.bgBlue('Please visit http://localhost:' + VARS.port + ' in your browser for development.'));
+	console.info(chalk.bgBlue('Directory location: ' + location));
 
 	app.get('/', function(req, res) {
 		res.sendFile(req.url, {root: location}, (err) => {
