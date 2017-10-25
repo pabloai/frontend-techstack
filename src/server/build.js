@@ -101,12 +101,12 @@ function js(env) {
                 else buildJS(path.join(SOURCE, VARS.js, VARS.index + '.js'), MAIN_JS, env);
             });
             testChild.on('exit', () => {
-                console.log('test child fired close event');
+                console.log(chalk.dim('Exiting test callback'));
             });
         }
     });
     lintChild.on('close', () => {
-        console.log('lint child fired close event');
+        console.log(chalk.dim('Exiting lint callback'));
     });
 }
 
@@ -128,7 +128,8 @@ function sassCompress(options) {
 
 function sass(env) {
     const cmd = 'npm run lint:style';
-    exec(cmd, (err, stdout, stderr) => {
+    let sassChild = null;
+    sassChild = exec(cmd, (err, stdout, stderr) => {
         if (err) {
             CMD_EXEC_ERROR(err, stdout, stderr);
         } else {
@@ -145,6 +146,9 @@ function sass(env) {
             options.file = path.join(SOURCE, VARS.style, VARS.index + '.scss');
             sassCompress(clone(options));
         }
+    });
+    sassChild.on('exit', () => {
+        console.log(chalk.dim('Exiting sass callback'));
     });
 }
 

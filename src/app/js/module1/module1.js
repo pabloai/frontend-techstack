@@ -10,6 +10,8 @@ function module1() {
 
     function init() {
         self.getUserAgent = getUserAgent;
+
+        console.log('Hello, World!');
     }
 
     /**

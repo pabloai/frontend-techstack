@@ -28,6 +28,14 @@ function devServer() {
 
 	app.listen(VARS.port);
 
+	process.on('SIGTERM', () => {
+		console.log('SITERM received');
+		process.exit();
+	});
+	process.on('SIGINT', () => {
+		console.log('SIGINT received');
+		process.exit();
+	});
 }
 
 module.exports = devServer;

@@ -5,7 +5,6 @@ const path = require('path'),
     jsWatchFiles = require('./watch-dirs').jsFileArr,
     sassWatchFiles = require('./watch-dirs').sassFileArr,
     build = require('./build'),
-    exec = require('child_process').exec,
     // appBuilder = require('./build-app-dir'),
     chalk = require('chalk'),
     VARS = require('../../package').vars;
@@ -53,16 +52,13 @@ function createWatcher(src, fn) {
             path.join(__dirname + 'index-params.js'),
             path.normalize(path.join(__dirname, '..', '..', VARS.out))
         ],
-        persistent: true
+        persistent: true,
+        ignoreInitial: true
     })
-        .on('add', path => {})
         .on('change', (path, err) => {
             console.log(chalk.cyan(`File ${path} has been changed`));
             if(err) throw chalk.red(err);
             fn();
         })
-        .on('error', error => console.log(chalk.red(`Watcher error: ${error}`)))
-        .on('raw', (event, path, details) => {
-            //console.log('Raw event info:', event, path, details)
-        });
+        .on('error', error => console.log(chalk.red(`Watcher error: ${error}`)));
 }
