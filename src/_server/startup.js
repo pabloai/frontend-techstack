@@ -1,10 +1,16 @@
 
 function startup(fn, arr) {
-    console.log(chalk.magenta('\nSetting up directory tree...'));
+    /*
+     * - remove build
+     * - ensure build dir and output files exist
+     * - start server
+     * - log metadata to console
+     */
+    console.log(chalk.bgMagenta('\nSetting up directory tree...'));
     if(arr === undefined) {
         arr = [MAIN_CSS, MAIN_JS];
     }
-    console.log(arr);
+    console.log(chalk.magenta(`Confirmed output files exist. ${arr}`);
     jetpack.remove(BUILD);
     jetpack.dirAsync(BUILD).then(function() {
         let promArr = [];

@@ -27,10 +27,6 @@
     "doc": "doc/",
     "index": "index",
     "js": "js/",
-    "jsDirs": [
-      "module1",
-      "module2"
-    ],
     "jsdoc_config": "conf.json",
     "node_version": ">=6.11.4",
     "out": "build/",

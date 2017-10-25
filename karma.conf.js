@@ -8,10 +8,10 @@ function karmaConfig(config) {
         '*.spec.js'
     ],
     frameworks: ['browserify', 'jasmine'],
-    autoWatch: false, // enable for hot reload
     logLevel: 'debug',
     reporters: ['dots', 'progress', 'coverage'],
-    singleRun: true, // enable for continuous integration
+    autoWatch: true, // enable for test/hot reload
+    singleRun: false, // disable for test
     plugins: [
         'karma-phantomjs-launcher',
         // 'karma-chrome-launcher',

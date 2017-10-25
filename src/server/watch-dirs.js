@@ -4,7 +4,7 @@ const jetpack = require('fs-jetpack'),
     VARS = require('../../package').vars,
     path = require('path'),
     chalk = require('chalk'),
-    jsDirs = VARS.jsDirs;
+    jsDirs = path.join(VARS.src, VARS.app, VARS.js);
 
 function pugFileArr() {
     return new Promise((resolve, reject) => {
@@ -17,22 +17,14 @@ function pugFileArr() {
 }
 
 function jsFileArr() {
-    var promises = []
-    // for (var i = 0; i < jsDirs.length; i++) {
-        return new Promise((resolve, reject) => {
-            jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.js), {matching: ['*.js', path.join('**', '*.js'), '!*.spec.js']}).then(data => {
-                console.log(data);
-                resolve(data);
-            }).catch((resolve, reject) => {
-                reject();
-            });
+    return new Promise((resolve, reject) => {
+        jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.js), {matching: ['*.js', path.join('**', '*.js'), '!*.spec.js']}).then(data => {
+            console.log(data);
+            resolve(data);
+        }).catch((resolve, reject) => {
+            reject();
         });
-    // }
-    // return Promise.all(promises).then(values => {
-    //     return [].concat.apply([], values);
-    // }).catch(reason => {
-    //     throw chalk.red(reason);
-    // });
+    });
 }
 
 function sassFileArr() {
