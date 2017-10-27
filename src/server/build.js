@@ -167,7 +167,7 @@ function startup(fn, arr) {
     if(arr === undefined) {
         arr = [MAIN_CSS, MAIN_JS];
     }
-    console.log(arr);
+    console.log(chalk.dim(arr));
     jetpack.remove(BUILD);
     jetpack.dirAsync(BUILD).then(function() {
         let promArr = [];

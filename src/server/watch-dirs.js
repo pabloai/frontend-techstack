@@ -9,7 +9,8 @@ const jetpack = require('fs-jetpack'),
 function pugFileArr() {
     return new Promise((resolve, reject) => {
         jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.templates), {matching: ['*.pug']}).then(data => {
-            console.log(chalk.yellow(`\nWatching PUG templates: \n${data}`));
+            console.log(chalk.magenta(`\nWatching PUG templates:`));
+            console.log(chalk.dim(`\n${data}`));
             resolve(data);
         }).catch((resolve, reject) => {
             reject()
@@ -20,7 +21,8 @@ function pugFileArr() {
 function jsFileArr() {
     return new Promise((resolve, reject) => {
         jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.js), {matching: ['*.js', path.join('**', '*.js'), '!*.spec.js']}).then(data => {
-            console.log(chalk.yellow(`\nWatching JS files: \n${data}`));
+            console.log(chalk.magenta(`\nWatching JS files:`));
+            console.log(chalk.dim(`\n${data}`));
             resolve(data);
         }).catch((resolve, reject) => {
             reject();
@@ -31,7 +33,8 @@ function jsFileArr() {
 function sassFileArr() {
     return new Promise((resolve, reject) => {
         jetpack.findAsync(path.join(__dirname, '..', VARS.app, VARS.style), {matching: '*.scss'}).then(data => {
-            console.log(chalk.yellow(`\nWatching SASS files: \n${data}`));
+            console.log(chalk.magenta(`\nWatching SASS files:`));
+            console.log(chalk.dim(`\n${data}`));
             resolve(data);
         }).catch((resolve, reject) => {
             reject()

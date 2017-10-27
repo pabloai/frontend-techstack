@@ -8,8 +8,7 @@ const path = require('path'),
     chalk = require('chalk'),
     VARS = require('../../package').vars;
 
-// require('./static-build'); //build on start
-build.startup(server);
+require('./static-build'); //build on start
 pugWatchFiles().then(data => {
     pug(data);
 });
@@ -20,7 +19,7 @@ jsWatchFiles().then(data => {
 sassWatchFiles().then(data => {
     sass(data);
 });
-// server();
+server();
 
 function pug(arr) {
     createWatcher(arr, () => {
