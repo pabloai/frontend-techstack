@@ -5,7 +5,9 @@ Jumpstart your front end code development lifecycle with this easy to use boiler
 ## Installation
 
 `npm install -g pug-cli snyk`
+
 `git clone https://github.com/EightArmCode/frontend-techstack.git`
+
 `cd frontend-techstack`
 
 
